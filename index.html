@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formations IA - Maîtrisez l'Intelligence Artificielle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon">&#9671;</span> Formations IA
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#formations">Formations</a></li>
+                <li><a href="#methode">Méthode</a></li>
+                <li><a href="#temoignages">Témoignages</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-effects">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-orb hero-orb-3"></div>
+        </div>
+        <div class="container hero-content">
+            <span class="hero-badge">Formations 2025-2026</span>
+            <h1>Maîtrisez l'<span class="gradient-text">Intelligence Artificielle</span></h1>
+            <p class="hero-subtitle">Des formations pratiques et accessibles pour intégrer l'IA dans votre quotidien professionnel. Du débutant à l'expert, trouvez la formation qui vous correspond.</p>
+            <div class="hero-actions">
+                <a href="#formations" class="btn btn-primary">Découvrir les formations</a>
+                <a href="#contact" class="btn btn-secondary">Prendre rendez-vous</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="500">0</span>+
+                    <span class="stat-label">Apprenants formés</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="98">0</span>%
+                    <span class="stat-label">Satisfaction</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="12">0</span>
+                    <span class="stat-label">Formations</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formations Section -->
+    <section class="formations" id="formations">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Catalogue</span>
+                <h2>Nos Formations IA</h2>
+                <p>Des parcours structurés pour tous les niveaux, de l'initiation à la maîtrise avancée.</p>
+            </div>
+
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">Toutes</button>
+                <button class="filter-btn" data-filter="debutant">Débutant</button>
+                <button class="filter-btn" data-filter="intermediaire">Intermédiaire</button>
+                <button class="filter-btn" data-filter="avance">Avancé</button>
+            </div>
+
+            <div class="formations-grid">
+                <!-- Formation 1 -->
+                <div class="formation-card" data-level="debutant">
+                    <div class="card-badge badge-debutant">Débutant</div>
+                    <div class="card-icon">&#129302;</div>
+                    <h3>Introduction à l'IA</h3>
+                    <p>Comprenez les fondamentaux de l'intelligence artificielle, son histoire, ses applications concrètes et son impact sur votre secteur d'activité.</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 1 journée (7h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Aucun prérequis</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel / Distanciel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">490 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+
+                <!-- Formation 2 -->
+                <div class="formation-card" data-level="debutant">
+                    <div class="card-badge badge-debutant">Débutant</div>
+                    <div class="card-icon">&#128172;</div>
+                    <h3>Maîtriser ChatGPT & les LLM</h3>
+                    <p>Apprenez à utiliser efficacement ChatGPT, Claude, Gemini et les autres modèles de langage pour booster votre productivité au quotidien.</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 1 journée (7h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Aucun prérequis</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel / Distanciel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">490 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+
+                <!-- Formation 3 -->
+                <div class="formation-card" data-level="debutant">
+                    <div class="card-badge badge-debutant">Débutant</div>
+                    <div class="card-icon">&#127912;</div>
+                    <h3>IA Générative : Images & Vidéos</h3>
+                    <p>Découvrez Midjourney, DALL-E, Stable Diffusion et Sora. Créez des visuels professionnels grâce à l'IA générative.</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 1 journée (7h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Aucun prérequis</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel / Distanciel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">490 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+
+                <!-- Formation 4 -->
+                <div class="formation-card" data-level="intermediaire">
+                    <div class="card-badge badge-intermediaire">Intermédiaire</div>
+                    <div class="card-icon">&#9997;&#65039;</div>
+                    <h3>Prompt Engineering</h3>
+                    <p>Maîtrisez l'art du prompt engineering. Techniques avancées de rédaction de prompts pour obtenir des résultats précis et exploitables.</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 2 jours (14h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Connaître les bases IA</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel / Distanciel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">890 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+
+                <!-- Formation 5 -->
+                <div class="formation-card" data-level="intermediaire">
+                    <div class="card-badge badge-intermediaire">Intermédiaire</div>
+                    <div class="card-icon">&#128736;&#65039;</div>
+                    <h3>Automatisation avec l'IA</h3>
+                    <p>Automatisez vos workflows avec Make, Zapier et les API d'IA. Gagnez des heures chaque semaine grâce à l'automatisation intelligente.</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 2 jours (14h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Usage basique de l'IA</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel / Distanciel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">890 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+
+                <!-- Formation 6 -->
+                <div class="formation-card" data-level="intermediaire">
+                    <div class="card-badge badge-intermediaire">Intermédiaire</div>
+                    <div class="card-icon">&#128200;</div>
+                    <h3>IA pour le Marketing</h3>
+                    <p>Intégrez l'IA dans votre stratégie marketing : création de contenu, analyse de données, personnalisation et optimisation de campagnes.</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 2 jours (14h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Bases en marketing digital</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel / Distanciel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">890 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+
+                <!-- Formation 7 -->
+                <div class="formation-card" data-level="intermediaire">
+                    <div class="card-badge badge-intermediaire">Intermédiaire</div>
+                    <div class="card-icon">&#128188;</div>
+                    <h3>IA pour les Managers</h3>
+                    <p>Pilotez la transformation IA de votre équipe. Stratégie d'adoption, gestion du changement, outils de pilotage et indicateurs de performance.</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 2 jours (14h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Poste de management</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel / Distanciel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">990 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+
+                <!-- Formation 8 -->
+                <div class="formation-card" data-level="avance">
+                    <div class="card-badge badge-avance">Avancé</div>
+                    <div class="card-icon">&#128640;</div>
+                    <h3>Développer avec les API d'IA</h3>
+                    <p>Intégrez les API OpenAI, Anthropic et Hugging Face dans vos applications. Créez des solutions IA sur mesure pour votre entreprise.</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 3 jours (21h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Bases en programmation</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel / Distanciel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">1 490 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+
+                <!-- Formation 9 -->
+                <div class="formation-card" data-level="avance">
+                    <div class="card-badge badge-avance">Avancé</div>
+                    <div class="card-icon">&#129504;</div>
+                    <h3>Machine Learning Appliqué</h3>
+                    <p>Construisez et déployez des modèles de Machine Learning. De la préparation des données à la mise en production avec Python et scikit-learn.</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 5 jours (35h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Python intermédiaire</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">2 490 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+
+                <!-- Formation 10 -->
+                <div class="formation-card" data-level="avance">
+                    <div class="card-badge badge-avance">Avancé</div>
+                    <div class="card-icon">&#128274;</div>
+                    <h3>IA Responsable & Éthique</h3>
+                    <p>Déployez l'IA de manière éthique et conforme. RGPD, biais algorithmiques, gouvernance des données et cadre réglementaire européen (AI Act).</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 2 jours (14h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Expérience avec l'IA</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel / Distanciel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">990 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+
+                <!-- Formation 11 -->
+                <div class="formation-card" data-level="avance">
+                    <div class="card-badge badge-avance">Avancé</div>
+                    <div class="card-icon">&#128101;</div>
+                    <h3>Agents IA & RAG</h3>
+                    <p>Créez des agents IA autonomes et des systèmes RAG. LangChain, LlamaIndex, bases vectorielles et architectures multi-agents.</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 3 jours (21h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Développement avec API IA</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">1 690 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+
+                <!-- Formation 12 -->
+                <div class="formation-card" data-level="avance">
+                    <div class="card-badge badge-avance">Avancé</div>
+                    <div class="card-icon">&#127959;&#65039;</div>
+                    <h3>Stratégie IA en Entreprise</h3>
+                    <p>Élaborez et déployez une stratégie IA globale. Audit de maturité, feuille de route, choix technologiques et conduite du changement.</p>
+                    <ul class="card-details">
+                        <li><span class="detail-icon">&#128337;</span> 3 jours (21h)</li>
+                        <li><span class="detail-icon">&#127891;</span> Direction / C-Level</li>
+                        <li><span class="detail-icon">&#128187;</span> Présentiel</li>
+                    </ul>
+                    <div class="card-footer">
+                        <span class="card-price">1 990 &euro;</span>
+                        <a href="#contact" class="btn btn-card">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Méthode Section -->
+    <section class="methode" id="methode">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Notre approche</span>
+                <h2>Une Méthode Éprouvée</h2>
+                <p>Un parcours pédagogique centré sur la pratique et l'opérationnalité immédiate.</p>
+            </div>
+
+            <div class="methode-grid">
+                <div class="methode-step">
+                    <div class="step-number">01</div>
+                    <h3>Diagnostic</h3>
+                    <p>Évaluation de votre niveau et de vos objectifs pour personnaliser le parcours de formation.</p>
+                </div>
+                <div class="methode-step">
+                    <div class="step-number">02</div>
+                    <h3>Théorie appliquée</h3>
+                    <p>Concepts clés illustrés par des exemples concrets issus de votre secteur d'activité.</p>
+                </div>
+                <div class="methode-step">
+                    <div class="step-number">03</div>
+                    <h3>Pratique intensive</h3>
+                    <p>70% du temps consacré aux exercices pratiques et cas d'usage réels sur vos propres projets.</p>
+                </div>
+                <div class="methode-step">
+                    <div class="step-number">04</div>
+                    <h3>Suivi post-formation</h3>
+                    <p>30 jours d'accompagnement après la formation pour consolider vos acquis et répondre à vos questions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages Section -->
+    <section class="temoignages" id="temoignages">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Retours d'expérience</span>
+                <h2>Ce Qu'en Disent Nos Apprenants</h2>
+                <p>Des professionnels qui ont transformé leur quotidien grâce à nos formations.</p>
+            </div>
+
+            <div class="temoignages-grid">
+                <div class="temoignage-card">
+                    <div class="temoignage-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="temoignage-text">"La formation Prompt Engineering a complètement changé ma façon de travailler. Je gagne au moins 2h par jour grâce aux techniques apprises."</p>
+                    <div class="temoignage-author">
+                        <div class="author-avatar">SL</div>
+                        <div>
+                            <strong>Sophie L.</strong>
+                            <span>Responsable Marketing - PME</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="temoignage-card">
+                    <div class="temoignage-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="temoignage-text">"Formation très concrète et applicable immédiatement. Le formateur maîtrise parfaitement son sujet et s'adapte au niveau de chacun."</p>
+                    <div class="temoignage-author">
+                        <div class="author-avatar">MD</div>
+                        <div>
+                            <strong>Marc D.</strong>
+                            <span>Directeur Technique - Startup</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="temoignage-card">
+                    <div class="temoignage-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="temoignage-text">"J'ai suivi la formation Agents IA & RAG. En 3 jours, j'ai pu créer un chatbot interne pour notre documentation. Un vrai gain pour l'équipe."</p>
+                    <div class="temoignage-author">
+                        <div class="author-avatar">AB</div>
+                        <div>
+                            <strong>Alexis B.</strong>
+                            <span>Développeur Full-Stack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Questions fréquentes</span>
+                <h2>FAQ</h2>
+                <p>Les réponses aux questions les plus courantes sur nos formations.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Faut-il savoir coder pour suivre vos formations ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Non, la plupart de nos formations ne nécessitent aucune compétence en programmation. Seules les formations "Développer avec les API d'IA", "Machine Learning Appliqué" et "Agents IA & RAG" requièrent des bases en programmation. Chaque formation indique clairement ses prérequis.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Les formations sont-elles éligibles au CPF ou à l'OPCO ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oui, nos formations sont certifiées Qualiopi et éligibles à une prise en charge par votre OPCO. Certaines formations sont également référencées sur MonCompteFormation (CPF). Contactez-nous pour obtenir un devis personnalisé pour votre organisme financeur.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Proposez-vous des formations sur mesure pour les entreprises ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolument. Nous proposons des formations intra-entreprise personnalisées selon vos besoins, votre secteur et vos outils. Nous réalisons un audit préalable pour adapter le contenu et les exercices à votre contexte spécifique.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Combien de participants par session ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nos sessions inter-entreprises accueillent entre 6 et 12 participants maximum pour garantir un suivi personnalisé. Pour les formations intra-entreprise, nous adaptons le format à vos besoins (jusqu'à 15 participants par session).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Quel matériel faut-il prévoir ?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Un ordinateur portable avec un navigateur web récent suffit pour la majorité des formations. Pour les formations techniques (ML, API, Agents), des instructions de configuration sont envoyées en amont. En présentiel, le Wi-Fi et les écrans sont fournis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Parlons de votre projet</span>
+                <h2>Contactez-nous</h2>
+                <p>Une question, un besoin de formation ? Remplissez le formulaire et nous vous répondrons sous 24h.</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nom">Nom complet</label>
+                            <input type="text" id="nom" name="nom" required placeholder="Votre nom">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone" placeholder="06 12 34 56 78">
+                        </div>
+                        <div class="form-group">
+                            <label for="entreprise">Entreprise</label>
+                            <input type="text" id="entreprise" name="entreprise" placeholder="Votre entreprise">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="formation">Formation souhaitée</label>
+                        <select id="formation" name="formation">
+                            <option value="">Sélectionnez une formation</option>
+                            <option value="intro-ia">Introduction à l'IA</option>
+                            <option value="chatgpt-llm">Maîtriser ChatGPT & les LLM</option>
+                            <option value="ia-generative">IA Générative : Images & Vidéos</option>
+                            <option value="prompt-engineering">Prompt Engineering</option>
+                            <option value="automatisation">Automatisation avec l'IA</option>
+                            <option value="ia-marketing">IA pour le Marketing</option>
+                            <option value="ia-managers">IA pour les Managers</option>
+                            <option value="api-ia">Développer avec les API d'IA</option>
+                            <option value="machine-learning">Machine Learning Appliqué</option>
+                            <option value="ia-ethique">IA Responsable & Éthique</option>
+                            <option value="agents-rag">Agents IA & RAG</option>
+                            <option value="strategie-ia">Stratégie IA en Entreprise</option>
+                            <option value="sur-mesure">Formation sur mesure</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Décrivez votre projet ou vos besoins en formation..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">Envoyer ma demande</button>
+                </form>
+
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">&#128231;</div>
+                        <h4>Email</h4>
+                        <p>contact@formations-ia.fr</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">&#128222;</div>
+                        <h4>Téléphone</h4>
+                        <p>01 23 45 67 89</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">&#128205;</div>
+                        <h4>Adresse</h4>
+                        <p>Paris, France</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">&#128338;</div>
+                        <h4>Horaires</h4>
+                        <p>Lun - Ven : 9h - 18h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#hero" class="nav-logo"><span class="logo-icon">&#9671;</span> Formations IA</a>
+                    <p>Des formations pratiques pour maîtriser l'intelligence artificielle et transformer votre activité.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Formations</h4>
+                    <a href="#formations">Débutant</a>
+                    <a href="#formations">Intermédiaire</a>
+                    <a href="#formations">Avancé</a>
+                    <a href="#contact">Sur mesure</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Informations</h4>
+                    <a href="#methode">Notre méthode</a>
+                    <a href="#temoignages">Témoignages</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Formations IA. Tous droits réservés. Organisme de formation certifié Qualiopi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
