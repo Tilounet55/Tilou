@@ -22,7 +22,6 @@ navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
 });
 
-// Close mobile menu on link click
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -58,19 +57,17 @@ function animateCounters() {
     });
 }
 
-// Trigger counter animation when hero is visible
-const heroObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounters();
-            heroObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) {
-    heroObserver.observe(heroStats);
+const statsBar = document.querySelector('.stats-bar');
+if (statsBar) {
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    statsObserver.observe(statsBar);
 }
 
 // ===========================
@@ -81,7 +78,6 @@ const formationCards = document.querySelectorAll('.formation-card');
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        // Update active button
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
@@ -109,13 +105,11 @@ faqItems.forEach(item => {
     question.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
 
-        // Close all items
         faqItems.forEach(i => {
             i.classList.remove('active');
             i.querySelector('.faq-answer').style.maxHeight = null;
         });
 
-        // Open clicked item if it wasn't active
         if (!isActive) {
             item.classList.add('active');
             const answer = item.querySelector('.faq-answer');
@@ -132,18 +126,16 @@ const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-
-    // Simulate form submission
     const submitBtn = contactForm.querySelector('.btn-submit');
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Envoi en cours...';
     submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.7';
 
     setTimeout(() => {
-        submitBtn.textContent = 'Message envoy\u00e9 !';
+        submitBtn.textContent = 'Demande envoyée !';
         submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        submitBtn.style.opacity = '1';
 
         setTimeout(() => {
             submitBtn.textContent = originalText;
@@ -159,7 +151,7 @@ contactForm.addEventListener('submit', (e) => {
 // ===========================
 function addFadeUpClass() {
     const elements = document.querySelectorAll(
-        '.formation-card, .methode-step, .temoignage-card, .faq-item, .info-card'
+        '.formation-card, .methode-step, .temoignage-card, .faq-item, .resultat-card, .garantie-item, .problem-card'
     );
     elements.forEach(el => el.classList.add('fade-up'));
 }
@@ -196,7 +188,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ===========================
-// Fade-in animation keyframe (injected via JS)
+// Fade-in animation keyframe
 // ===========================
 const style = document.createElement('style');
 style.textContent = `
