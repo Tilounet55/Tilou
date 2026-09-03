@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Inventaire des principales fonctionnalités de Claude, classées par usage, avec leur traduction pédagogique pour un organisme de formation.">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Registre des capacités de Claude</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#EDEDE7;
+  --surface:#F7F7F3;
+  --ink:#15201A;
+  --ink-2:#3E4C45;
+  --ink-3:#6C776F;
+  --rule:#D3D4CA;
+  --rule-strong:#B9BBAF;
+  --accent:#1F4A3C;
+  --accent-soft:#DEE7E1;
+  --signal:#A84E19;
+  --signal-soft:#EFE3D8;
+  --maxw:1160px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#131714;
+    --surface:#1B201C;
+    --ink:#E8EAE2;
+    --ink-2:#B7BEB5;
+    --ink-3:#879088;
+    --rule:#2C332D;
+    --rule-strong:#3D453E;
+    --accent:#8CC4A8;
+    --accent-soft:#1F2C25;
+    --signal:#E29457;
+    --signal-soft:#2E2318;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131714;
+  --surface:#1B201C;
+  --ink:#E8EAE2;
+  --ink-2:#B7BEB5;
+  --ink-3:#879088;
+  --rule:#2C332D;
+  --rule-strong:#3D453E;
+  --accent:#8CC4A8;
+  --accent-soft:#1F2C25;
+  --signal:#E29457;
+  --signal-soft:#2E2318;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink-2);
+  font-family:"Public Sans","Helvetica Neue",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{
+  font-family:Fraunces,"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  color:var(--ink);
+  margin:0;
+  text-wrap:balance;
+  font-weight:600;
+  line-height:1.15;
+}
+p{margin:0;}
+a{color:var(--accent);text-underline-offset:3px;}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px;}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,4vw,44px);}
+
+/* ---------- Bandeau de tête ---------- */
+.masthead{border-bottom:1px solid var(--rule-strong);padding:clamp(38px,6vw,72px) 0 clamp(28px,4vw,44px);}
+.kicker{
+  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+  display:block;margin-bottom:18px;
+}
+.masthead h1{font-size:clamp(2.4rem,6vw,4.1rem);letter-spacing:-.02em;max-width:16ch;}
+.masthead h1 em{font-style:italic;color:var(--accent);}
+.deck{margin-top:22px;max-width:62ch;font-size:clamp(1.02rem,1.6vw,1.16rem);color:var(--ink-2);}
+.meta-strip{
+  display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11.5px;color:var(--ink-3);
+  letter-spacing:.03em;
+}
+.meta-strip span b{color:var(--ink-2);font-weight:500;}
+
+/* ---------- Corps : rail + registre ---------- */
+.body-grid{display:grid;grid-template-columns:212px minmax(0,1fr);gap:clamp(32px,5vw,72px);padding:clamp(30px,4vw,52px) 0 0;}
+.rail{position:sticky;top:24px;align-self:start;}
+.rail h2{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px;}
+.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
+.rail li{border-top:1px solid var(--rule);}
+.rail li:last-child{border-bottom:1px solid var(--rule);}
+.rail a{
+  display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:baseline;
+  padding:9px 0;text-decoration:none;color:var(--ink-2);font-size:14px;line-height:1.35;
+}
+.rail a span{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;color:var(--ink-3);}
+.rail a:hover{color:var(--accent);}
+.rail a:hover span{color:var(--accent);}
+.rail .rail-note{
+  margin-top:22px;padding:14px;border-left:2px solid var(--signal);background:var(--signal-soft);
+  font-size:13px;line-height:1.55;color:var(--ink-2);
+}
+
+.register{display:flex;flex-direction:column;gap:clamp(44px,6vw,72px);}
+
+.entry{scroll-margin-top:24px;}
+.entry-head{border-top:2px solid var(--ink);padding-top:16px;}
+.entry-ref{
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.1em;
+  color:var(--signal);display:block;margin-bottom:8px;
+}
+.entry-head h2{font-size:clamp(1.55rem,3vw,2.1rem);letter-spacing:-.015em;}
+.entry-head .lede{margin-top:12px;max-width:64ch;font-size:1.02rem;}
+
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:26px;}
+.feat{background:var(--surface);padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;}
+.feat .tag{
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+.feat h3{font-size:1.09rem;font-weight:600;letter-spacing:-.005em;}
+.feat p{font-size:14.5px;line-height:1.6;}
+
+.note{
+  margin-top:22px;border-left:2px solid var(--accent);background:var(--accent-soft);
+  padding:16px 20px;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;align-items:baseline;
+}
+.note b{
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--accent);font-weight:500;white-space:nowrap;
+}
+.note p{font-size:14.5px;color:var(--ink-2);}
+
+/* ---------- Matrice des surfaces ---------- */
+.matrix-section{margin-top:clamp(56px,7vw,90px);border-top:2px solid var(--ink);padding-top:16px;}
+.table-scroll{overflow-x:auto;margin-top:24px;border:1px solid var(--rule);}
+table{border-collapse:collapse;width:100%;min-width:660px;background:var(--surface);font-size:14.5px;}
+caption{text-align:left;padding:0 0 12px;font-size:14px;color:var(--ink-3);}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:top;}
+thead th{
+  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);font-weight:500;background:var(--paper);
+}
+tbody th{font-weight:600;color:var(--ink);white-space:nowrap;}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:none;}
+td.mark{font-variant-numeric:tabular-nums;text-align:center;width:96px;color:var(--accent);font-size:15px;}
+td.mark.off{color:var(--ink-3);}
+.legend{margin-top:12px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;color:var(--ink-3);letter-spacing:.03em;}
+
+/* ---------- Vigilance ---------- */
+.caution{margin-top:clamp(56px,7vw,90px);border-top:2px solid var(--signal);padding-top:16px;}
+.caution-list{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px 40px;}
+.caution-list li{border-top:1px solid var(--rule);padding-top:14px;}
+.caution-list h3{font-size:1rem;margin-bottom:6px;}
+.caution-list p{font-size:14.5px;}
+
+/* ---------- Pied ---------- */
+footer{margin-top:clamp(60px,8vw,100px);border-top:1px solid var(--rule-strong);padding:26px 0 46px;}
+footer p{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11.5px;color:var(--ink-3);letter-spacing:.03em;line-height:1.8;}
+
+@media (max-width:900px){
+  .body-grid{grid-template-columns:1fr;gap:34px;}
+  .rail{position:static;}
+  .rail ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0 24px;}
+  .rail li:last-child{border-bottom:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;}
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <span class="kicker">Fiche de référence — IA générative</span>
+    <h1>Ce que sait faire <em>Claude</em></h1>
+    <p class="deck">Un inventaire des capacités de l'assistant d'Anthropic, classé par usage et non par nom de bouton&nbsp;: à chaque famille de fonctionnalités, ce qu'elle fait réellement et ce qu'elle change dans le travail quotidien d'un organisme de formation.</p>
+    <div class="meta-strip">
+      <span>Rédigé le <b>3 septembre 2026</b></span>
+      <span>Portée <b>claude.ai · applications · Claude Code · API</b></span>
+      <span>Modèles cités <b>Opus 5 · Sonnet 5 · Haiku 4.5</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="body-grid">
+
+    <nav class="rail" aria-label="Sommaire">
+      <h2>Sommaire</h2>
+      <ol>
+        <li><a href="#s1"><span>§1</span>Comprendre et raisonner</a></li>
+        <li><a href="#s2"><span>§2</span>Lire vos documents</a></li>
+        <li><a href="#s3"><span>§3</span>Produire des livrables</a></li>
+        <li><a href="#s4"><span>§4</span>Travailler par projet</a></li>
+        <li><a href="#s5"><span>§5</span>Automatiser vos méthodes</a></li>
+        <li><a href="#s6"><span>§6</span>Se brancher sur vos outils</a></li>
+        <li><a href="#s7"><span>§7</span>Chercher et sourcer</a></li>
+        <li><a href="#s8"><span>§8</span>Coder et automatiser</a></li>
+        <li><a href="#surfaces"><span>§9</span>Où l'utiliser</a></li>
+        <li><a href="#vigilance"><span>§10</span>Points de vigilance</a></li>
+      </ol>
+      <p class="rail-note">Chaque section se termine par une note <b>« En formation »</b>&nbsp;: la traduction pédagogique de la fonctionnalité, utilisable telle quelle dans un déroulé de module.</p>
+    </nav>
+
+    <main class="register">
+
+      <section class="entry" id="s1">
+        <div class="entry-head">
+          <span class="entry-ref">§ 1</span>
+          <h2>Comprendre et raisonner</h2>
+          <p class="lede">Le socle&nbsp;: un modèle de langage qui suit une consigne longue, tient une conversation de plusieurs heures sans perdre le fil, et sait ralentir quand le problème le mérite.</p>
+        </div>
+        <div class="feats">
+          <article class="feat">
+            <span class="tag">Trois modèles</span>
+            <h3>Opus, Sonnet, Haiku</h3>
+            <p>Opus 5 pour l'analyse difficile et la rédaction exigeante, Sonnet 5 pour l'usage courant, Haiku 4.5 pour les tâches répétitives à haut volume. Le choix se fait dans un menu, sans changer de méthode de travail.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Réflexion étendue</span>
+            <h3>Le mode « réfléchir avant de répondre »</h3>
+            <p>Claude peut dérouler un raisonnement visible avant de conclure. Utile pour un calcul de coûts pédagogiques, un arbitrage réglementaire ou la relecture d'un raisonnement à étapes.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Fenêtre de contexte</span>
+            <h3>Des centaines de pages en mémoire vive</h3>
+            <p>Un référentiel de certification, un catalogue de formations et douze comptes rendus tiennent dans une même conversation&nbsp;: Claude les compare sans qu'on ait à les résumer d'abord.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Langues</span>
+            <h3>Français de travail, pas français traduit</h3>
+            <p>Rédaction, reformulation et traduction dans une trentaine de langues, avec un français administratif et pédagogique correct — Qualiopi, OPCO, CPF, France&nbsp;Travail inclus.</p>
+          </article>
+        </div>
+        <aside class="note"><b>En formation</b><p>Premier module d'un parcours&nbsp;: faire choisir le bon modèle selon la tâche. C'est l'exercice qui fait le plus vite comprendre qu'un assistant IA n'est pas un moteur de recherche.</p></aside>
+      </section>
+
+      <section class="entry" id="s2">
+        <div class="entry-head">
+          <span class="entry-ref">§ 2</span>
+          <h2>Lire vos documents</h2>
+          <p class="lede">On dépose des fichiers dans la conversation, Claude les lit vraiment&nbsp;: texte, tableaux, images, captures d'écran, schémas manuscrits.</p>
+        </div>
+        <div class="feats">
+          <article class="feat">
+            <span class="tag">Fichiers</span>
+            <h3>PDF, Word, Excel, CSV, PowerPoint</h3>
+            <p>Extraction, synthèse, comparaison de versions, repérage d'incohérences entre deux documents. Un PDF de 200 pages est traité en une requête.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Vision</span>
+            <h3>Images et captures d'écran</h3>
+            <p>Claude décrit un graphique, lit un tableau photographié, explique un message d'erreur à partir d'une capture, transcrit un tableau blanc de réunion.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Données</span>
+            <h3>Analyse de tableurs</h3>
+            <p>Un fichier de suivi d'inscriptions déposé dans le chat&nbsp;: Claude calcule, croise, détecte les doublons et les lignes incomplètes, puis rend un tableau propre.</p>
+          </article>
+        </div>
+        <aside class="note"><b>En formation</b><p>Exercice à fort effet&nbsp;: faire déposer aux stagiaires leur propre fichier de travail — un émargement, un devis, un bilan pédagogique — plutôt qu'un jeu de données fictif.</p></aside>
+      </section>
+
+      <section class="entry" id="s3">
+        <div class="entry-head">
+          <span class="entry-ref">§ 3</span>
+          <h2>Produire des livrables</h2>
+          <p class="lede">La différence avec un simple chat&nbsp;: la réponse sort de la conversation et devient un objet — page, document, tableur, petite application — que l'on garde, modifie et partage.</p>
+        </div>
+        <div class="feats">
+          <article class="feat">
+            <span class="tag">Artifacts</span>
+            <h3>Un livrable à côté du dialogue</h3>
+            <p>Page web, tableau de bord, quiz interactif, calculateur, schéma&nbsp;: l'objet s'affiche dans un panneau dédié, se met à jour au fil des demandes et s'ouvre par un lien.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Édition en place</span>
+            <h3>Corriger en désignant</h3>
+            <p>On surligne le passage à changer dans l'artifact, on tape la consigne, Claude modifie ce point-là sans régénérer l'ensemble.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Fichiers bureautiques</span>
+            <h3>Word, Excel, PowerPoint, PDF</h3>
+            <p>Claude exécute du code pour fabriquer de vrais fichiers téléchargeables&nbsp;: un livret d'exercices, une grille d'évaluation, une trame de convention, un support de cours.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Exécution de code</span>
+            <h3>Calculs et graphiques vérifiés</h3>
+            <p>Plutôt que d'estimer un résultat, Claude écrit et exécute le calcul, puis en montre la sortie. Les chiffres produits sont reproductibles.</p>
+          </article>
+        </div>
+        <aside class="note"><b>En formation</b><p>C'est ici que se joue la démonstration de valeur devant un financeur&nbsp;: une heure d'atelier suffit pour repartir avec un support de cours complet et un quiz d'évaluation.</p></aside>
+      </section>
+
+      <section class="entry" id="s4">
+        <div class="entry-head">
+          <span class="entry-ref">§ 4</span>
+          <h2>Travailler par projet</h2>
+          <p class="lede">Un espace par sujet, avec ses documents de référence et ses consignes permanentes&nbsp;: on cesse de réexpliquer son contexte à chaque conversation.</p>
+        </div>
+        <div class="feats">
+          <article class="feat">
+            <span class="tag">Projects</span>
+            <h3>Base de connaissances dédiée</h3>
+            <p>On y dépose le référentiel qualité, la charte éditoriale, les modèles de documents. Toutes les conversations du projet s'y appuient automatiquement.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Instructions</span>
+            <h3>Un cadre permanent</h3>
+            <p>Ton, format de sortie, vocabulaire métier, interdits&nbsp;: écrits une fois dans le projet, appliqués à chaque échange sans rappel.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Mémoire</span>
+            <h3>Continuité entre conversations</h3>
+            <p>Claude peut retenir vos préférences de travail d'une session à l'autre. La fonction s'active, se consulte et se vide à la demande.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Équipe</span>
+            <h3>Partage interne</h3>
+            <p>Sur les offres Team et Enterprise, un projet se partage&nbsp;: les formateurs travaillent sur le même socle documentaire et les mêmes consignes.</p>
+          </article>
+        </div>
+        <aside class="note"><b>En formation</b><p>Un projet par domaine — bureautique, numérique, IA générative — plutôt qu'un projet par client&nbsp;: la mutualisation des trames pèse plus lourd que la personnalisation.</p></aside>
+      </section>
+
+      <section class="entry" id="s5">
+        <div class="entry-head">
+          <span class="entry-ref">§ 5</span>
+          <h2>Automatiser vos méthodes</h2>
+          <p class="lede">Une procédure que l'on répète — construire un plan de formation, évaluer un dossier de certification, mettre en forme une facture — s'écrit une fois et devient une compétence de Claude.</p>
+        </div>
+        <div class="feats">
+          <article class="feat">
+            <span class="tag">Skills</span>
+            <h3>Des procédures réutilisables</h3>
+            <p>Un dossier d'instructions, de gabarits et de scripts que Claude charge de lui-même quand la demande correspond. Le résultat est identique d'une fois sur l'autre.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Déclenchement</span>
+            <h3>Appelées par le sujet, pas par un menu</h3>
+            <p>Chaque compétence décrit ses cas d'usage&nbsp;; Claude choisit celle qui s'applique. On peut aussi l'invoquer explicitement par son nom.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Sous-agents</span>
+            <h3>Déléguer une tâche annexe</h3>
+            <p>Une recherche large ou une relecture systématique part vers un agent secondaire qui ne rend que sa conclusion, sans encombrer la conversation principale.</p>
+          </article>
+        </div>
+        <aside class="note"><b>En formation</b><p>Le vrai gisement de productivité pour un organisme&nbsp;: transformer ses cinq procédures les plus répétitives en compétences, plutôt que de former aux prompts un par un.</p></aside>
+      </section>
+
+      <section class="entry" id="s6">
+        <div class="entry-head">
+          <span class="entry-ref">§ 6</span>
+          <h2>Se brancher sur vos outils</h2>
+          <p class="lede">Claude ne se limite pas à ce qu'on lui colle&nbsp;: via des connecteurs, il lit et écrit dans les applications où vivent déjà les données.</p>
+        </div>
+        <div class="feats">
+          <article class="feat">
+            <span class="tag">Connecteurs</span>
+            <h3>Gmail, Drive, Agenda, Slack, Notion…</h3>
+            <p>Retrouver un devis dans Drive, préparer une réponse à un courriel, créer un compte rendu dans Notion, poser une session dans l'agenda&nbsp;: sans copier-coller.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">MCP</span>
+            <h3>Un protocole ouvert</h3>
+            <p>Le Model Context Protocol est le standard qui décrit ces branchements. Toute application qui l'implémente devient accessible à Claude, y compris un outil interne.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Contrôle</span>
+            <h3>Autorisations explicites</h3>
+            <p>Chaque connecteur s'active individuellement et demande confirmation avant une action qui écrit ou envoie. Un administrateur peut restreindre la liste pour toute l'organisation.</p>
+          </article>
+        </div>
+        <aside class="note"><b>En formation</b><p>À traiter en présence du référent informatique du client&nbsp;: c'est le point où la question « et nos données ? » se pose, et où une réponse précise fait la différence.</p></aside>
+      </section>
+
+      <section class="entry" id="s7">
+        <div class="entry-head">
+          <span class="entry-ref">§ 7</span>
+          <h2>Chercher et sourcer</h2>
+          <p class="lede">Le modèle a une date d'arrêt de connaissances&nbsp;; la recherche web la contourne, et les citations rendent le résultat vérifiable.</p>
+        </div>
+        <div class="feats">
+          <article class="feat">
+            <span class="tag">Recherche web</span>
+            <h3>Information à jour</h3>
+            <p>Claude interroge le web quand la question l'exige — un taux, une date de réforme, une version de logiciel — et cite les pages utilisées.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Recherche approfondie</span>
+            <h3>Enquête multi-sources</h3>
+            <p>Sur une question large, Claude enchaîne des dizaines de recherches et rend une note structurée avec ses références. Compter plusieurs minutes de traitement.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Citations</span>
+            <h3>Traçabilité</h3>
+            <p>Chaque affirmation issue du web pointe vers sa source. C'est ce qui rend l'usage compatible avec une veille réglementaire opposable.</p>
+          </article>
+        </div>
+        <aside class="note"><b>En formation</b><p>Support direct de l'indicateur&nbsp;24 de Qualiopi&nbsp;: une veille légale et pédagogique documentée, datée et sourcée, produite en une session hebdomadaire.</p></aside>
+      </section>
+
+      <section class="entry" id="s8">
+        <div class="entry-head">
+          <span class="entry-ref">§ 8</span>
+          <h2>Coder et automatiser</h2>
+          <p class="lede">Pour les publics techniques et pour vos propres outils internes&nbsp;: Claude agit sur un dépôt de code, ou s'intègre dans une application par l'API.</p>
+        </div>
+        <div class="feats">
+          <article class="feat">
+            <span class="tag">Claude Code</span>
+            <h3>Un agent dans le terminal</h3>
+            <p>Il lit le projet, écrit les fichiers, lance les tests, corrige ce qui casse, prépare le commit. Disponible en ligne de commande, dans les IDE, sur le web et en application de bureau.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">API</span>
+            <h3>Intégration applicative</h3>
+            <p>Appels directs au modèle depuis vos scripts et vos automatisations Make ou n8n, avec appel d'outils, traitement par lot et mise en cache des invites pour réduire le coût.</p>
+          </article>
+          <article class="feat">
+            <span class="tag">Agent SDK</span>
+            <h3>Construire ses propres agents</h3>
+            <p>La même boucle d'agent que Claude Code, réutilisable pour bâtir un assistant métier — par exemple un générateur de programmes conforme à vos gabarits.</p>
+          </article>
+        </div>
+        <aside class="note"><b>En formation</b><p>Utile même sans public développeur&nbsp;: la version bureau de Claude Code sert à faire manipuler des fichiers en masse — renommer, convertir, fusionner — sans écrire une ligne de code.</p></aside>
+      </section>
+
+      <section class="matrix-section" id="surfaces">
+        <span class="entry-ref">§ 9</span>
+        <h2>Où l'utiliser</h2>
+        <p class="lede" style="margin-top:12px;max-width:64ch;">Les fonctionnalités ne sont pas toutes présentes partout. Repère rapide avant de bâtir un déroulé de séance et de vérifier ce que les stagiaires auront réellement sous les yeux.</p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Surface</th>
+                <th scope="col">Usage principal</th>
+                <th scope="col">Artifacts</th>
+                <th scope="col">Connecteurs</th>
+                <th scope="col">Accès fichiers locaux</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">claude.ai (web)</th>
+                <td>Usage quotidien, projets, partage</td>
+                <td class="mark">●</td>
+                <td class="mark">●</td>
+                <td class="mark off">—</td>
+              </tr>
+              <tr>
+                <th scope="row">Application bureau</th>
+                <td>Travail sur poste, dictée, raccourci global</td>
+                <td class="mark">●</td>
+                <td class="mark">●</td>
+                <td class="mark">◐</td>
+              </tr>
+              <tr>
+                <th scope="row">Application mobile</th>
+                <td>Consultation, photo, prise de notes</td>
+                <td class="mark">◐</td>
+                <td class="mark">●</td>
+                <td class="mark off">—</td>
+              </tr>
+              <tr>
+                <th scope="row">Claude Code</th>
+                <td>Fichiers, code, automatisations locales</td>
+                <td class="mark">●</td>
+                <td class="mark">●</td>
+                <td class="mark">●</td>
+              </tr>
+              <tr>
+                <th scope="row">API / SDK</th>
+                <td>Intégration dans vos propres outils</td>
+                <td class="mark off">—</td>
+                <td class="mark">◐</td>
+                <td class="mark off">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="legend">● disponible   ◐ partiel ou selon configuration   — non applicable</p>
+      </section>
+
+      <section class="caution" id="vigilance">
+        <span class="entry-ref">§ 10</span>
+        <h2>Points de vigilance</h2>
+        <p class="lede" style="margin-top:12px;max-width:64ch;">Ce qu'un formateur doit dire au même titre que les fonctionnalités&nbsp;: une formation qui ne traite que les capacités produit des utilisateurs imprudents.</p>
+        <ul class="caution-list">
+          <li>
+            <h3>L'erreur assurée</h3>
+            <p>Claude peut affirmer un fait faux avec aplomb, surtout sur des chiffres, des références juridiques et des dates. Toute donnée engageante se vérifie à la source.</p>
+          </li>
+          <li>
+            <h3>Date d'arrêt des connaissances</h3>
+            <p>Sans recherche web activée, le modèle ignore ce qui s'est passé après son entraînement. Sur un sujet réglementaire, exiger la recherche et les citations.</p>
+          </li>
+          <li>
+            <h3>Données personnelles</h3>
+            <p>Pas de données de santé, de coordonnées de stagiaires ni de pièces d'identité dans une conversation sans cadre contractuel adapté. Anonymiser en amont.</p>
+          </li>
+          <li>
+            <h3>Confidentialité selon l'offre</h3>
+            <p>Les conditions d'usage des conversations diffèrent entre offre grand public et offres professionnelles. Vérifier l'offre souscrite avant de statuer devant un client.</p>
+          </li>
+          <li>
+            <h3>Le prompt n'est pas la compétence</h3>
+            <p>La qualité vient du contexte fourni et de la relecture critique, pas de formules magiques. Une formation centrée sur des « prompts miracles » vieillit en quelques mois.</p>
+          </li>
+          <li>
+            <h3>Traçabilité pédagogique</h3>
+            <p>Un livrable produit avec l'IA reste sous la responsabilité de l'organisme. Conserver la trace de la relecture humaine et mentionner l'usage de l'IA quand il est substantiel.</p>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>Fiche de référence interne — état des fonctionnalités au 3 septembre 2026.<br>Les noms d'offres et la disponibilité des fonctions évoluent rapidement&nbsp;: vérifier avant chaque session de formation.</p>
+  </div>
+</footer>
+</body>
+</html>
