@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Formation ChatGPT — Maîtriser l'IA générative</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap">
+
+    <style>
+        :root {
+            --primary: #10a37f;
+            --primary-dark: #0d8a6a;
+            --accent: #ffb703;
+            --bg-dark: #0f1419;
+            --bg-slide: #141a21;
+            --text-light: #e8ecef;
+            --text-muted: #9aa5b1;
+        }
+
+        .reveal {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .reveal .slides {
+            text-align: left;
+        }
+
+        .reveal .slides section {
+            padding: 20px;
+        }
+
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            text-transform: none;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-bottom: 0.6em;
+        }
+
+        .reveal h1 { font-size: 2.8em; line-height: 1.1; }
+        .reveal h2 { font-size: 2em; }
+        .reveal h3 { font-size: 1.4em; color: var(--primary); }
+
+        .reveal p, .reveal li {
+            line-height: 1.5;
+            font-size: 0.85em;
+        }
+
+        .reveal a { color: var(--primary); text-decoration: none; }
+        .reveal a:hover { color: var(--accent); }
+
+        .reveal pre {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border-radius: 8px;
+            font-size: 0.5em;
+        }
+
+        .reveal pre code {
+            font-family: 'JetBrains Mono', monospace;
+            padding: 20px;
+            border-radius: 8px;
+            max-height: 500px;
+        }
+
+        .reveal .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .reveal .accent {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Title slide */
+        .title-slide {
+            text-align: center !important;
+        }
+        .title-slide h1 {
+            font-size: 3.2em;
+            background: linear-gradient(135deg, var(--primary) 0%, #4ad3b2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .title-slide .subtitle {
+            font-size: 1.2em;
+            color: var(--text-muted);
+            margin-top: 1em;
+            font-weight: 300;
+        }
+        .title-slide .meta {
+            margin-top: 2.5em;
+            font-size: 0.75em;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Logo bubble */
+        .gpt-logo {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 1.5em;
+            background: linear-gradient(135deg, var(--primary), #4ad3b2);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            font-weight: 800;
+            box-shadow: 0 20px 60px rgba(16, 163, 127, 0.4);
+        }
+
+        /* Cards layout */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 1em;
+        }
+        .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-left: 3px solid var(--primary);
+            padding: 22px;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-4px); }
+        .card h4 {
+            color: var(--primary);
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+        }
+        .card p {
+            margin: 0;
+            font-size: 0.75em;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 1em;
+        }
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .timeline-year {
+            background: var(--primary);
+            color: white;
+            font-weight: 800;
+            padding: 10px 16px;
+            border-radius: 8px;
+            min-width: 90px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .timeline-content {
+            flex: 1;
+            background: rgba(255,255,255,0.04);
+            padding: 14px 18px;
+            border-radius: 8px;
+            font-size: 0.8em;
+        }
+        .timeline-content strong { color: var(--accent); }
+
+        /* Prompt box */
+        .prompt-box {
+            background: #0b1416;
+            border: 1px solid rgba(16, 163, 127, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65em;
+            line-height: 1.6;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        .prompt-box .label {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+        .prompt-box .label.bad { background: #e63946; }
+        .prompt-box .label.good { background: var(--primary); }
+
+        /* Comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 1em;
+        }
+        .comparison > div {
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .comparison .bad {
+            background: rgba(230, 57, 70, 0.08);
+            border: 1px solid rgba(230, 57, 70, 0.3);
+        }
+        .comparison .good {
+            background: rgba(16, 163, 127, 0.08);
+            border: 1px solid rgba(16, 163, 127, 0.3);
+        }
+        .comparison h4 { font-size: 1em; margin-top: 0; }
+        .comparison .bad h4 { color: #ff6b7a; }
+        .comparison .good h4 { color: var(--primary); }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin-top: 1em;
+        }
+        .checklist li {
+            padding: 10px 0 10px 32px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.85em;
+        }
+        .checklist li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 1.2em;
+        }
+        .checklist.cross li::before {
+            content: "✗";
+            color: #e63946;
+        }
+
+        /* Big stat */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-top: 1em;
+            text-align: center;
+        }
+        .stat {
+            padding: 20px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 10px;
+        }
+        .stat .num {
+            font-size: 2.4em;
+            font-weight: 800;
+            color: var(--primary);
+            display: block;
+            line-height: 1;
+        }
+        .stat .label {
+            font-size: 0.7em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 8px;
+        }
+
+        /* Framework box */
+        .framework {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 15px;
+            align-items: center;
+            background: rgba(255,255,255,0.04);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .framework .letter {
+            font-size: 2em;
+            font-weight: 800;
+            color: var(--accent);
+            text-align: center;
+        }
+        .framework .text strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.95em;
+        }
+        .framework .text p {
+            margin: 0;
+            font-size: 0.75em;
+            color: var(--text-muted);
+        }
+
+        /* Section header slide */
+        .section-slide {
+            text-align: center !important;
+        }
+        .section-slide .section-num {
+            font-size: 0.9em;
+            color: var(--primary);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1em;
+        }
+        .section-slide h2 {
+            font-size: 3em;
+            margin-bottom: 0.3em;
+        }
+        .section-slide .section-sub {
+            color: var(--text-muted);
+            font-weight: 300;
+            font-size: 1em;
+        }
+
+        /* Footer */
+        .reveal .slide-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 30px;
+            font-size: 0.5em;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* Progress bar styling */
+        .reveal .progress {
+            color: var(--primary);
+            height: 4px;
+        }
+
+        /* Controls */
+        .reveal .controls {
+            color: var(--primary);
+        }
+
+        /* Quote */
+        .reveal blockquote {
+            background: rgba(16, 163, 127, 0.08);
+            border-left: 4px solid var(--primary);
+            padding: 20px 25px;
+            font-style: italic;
+            font-size: 0.85em;
+            box-shadow: none;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Two column layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 1em;
+        }
+
+        /* Icon badge */
+        .icon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 163, 127, 0.15);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- ============ 1. TITLE ============ -->
+            <section class="title-slide">
+                <div class="gpt-logo">⚡</div>
+                <h1>Formation ChatGPT</h1>
+                <p class="subtitle">Maîtriser l'IA générative au quotidien</p>
+                <div class="meta">Programme pédagogique · 1 journée</div>
+            </section>
+
+            <!-- ============ 2. SOMMAIRE ============ -->
+            <section>
+                <h2>Programme</h2>
+                <div class="cards">
+                    <div class="card"><h4>1 · Comprendre</h4><p>Qu'est-ce que ChatGPT et comment ça fonctionne vraiment ?</p></div>
+                    <div class="card"><h4>2 · Prendre en main</h4><p>Interface, modèles, fonctionnalités clés</p></div>
+                    <div class="card"><h4>3 · Prompt engineering</h4><p>L'art de bien formuler ses demandes</p></div>
+                    <div class="card"><h4>4 · Cas d'usage</h4><p>Rédaction, analyse, code, création, synthèse</p></div>
+                    <div class="card"><h4>5 · Limites & éthique</h4><p>Hallucinations, biais, confidentialité, RGPD</p></div>
+                    <div class="card"><h4>6 · Pratique</h4><p>Ateliers, exercices et plan d'action</p></div>
+                </div>
+            </section>
+
+            <!-- ============ MODULE 1 ============ -->
+            <section class="section-slide">
+                <div class="section-num">Module 1</div>
+                <h2>Comprendre ChatGPT</h2>
+                <p class="section-sub">Les fondamentaux de l'IA générative</p>
+            </section>
+
+            <section>
+                <h2>Qu'est-ce que ChatGPT ?</h2>
+                <p>ChatGPT est un <span class="highlight">agent conversationnel</span> développé par <span class="accent">OpenAI</span>, basé sur une famille de grands modèles de langage (LLM) de la série <strong>GPT</strong> (<em>Generative Pre-trained Transformer</em>).</p>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Generative</h4>
+                        <p>Il <em>génère</em> du contenu : texte, code, idées, résumés...</p>
+                    </div>
+                    <div class="card">
+                        <h4>Pre-trained</h4>
+                        <p>Entraîné sur d'énormes volumes de données textuelles.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Transformer</h4>
+                        <p>Architecture de réseau de neurones (Google, 2017) spécialisée dans le langage.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Chiffres clés</h2>
+                <div class="stat-grid">
+                    <div class="stat"><span class="num">800M+</span><div class="label">Utilisateurs hebdomadaires</div></div>
+                    <div class="stat"><span class="num">#1</span><div class="label">Appli IA grand public</div></div>
+                    <div class="stat"><span class="num">2022</span><div class="label">Lancement public (nov.)</div></div>
+                    <div class="stat"><span class="num">190+</span><div class="label">Pays d'utilisation</div></div>
+                </div>
+                <p style="margin-top: 1.5em; color: var(--text-muted); font-size: 0.75em; text-align: center;">
+                    ChatGPT a été l'application grand public à la croissance la plus rapide de l'histoire.
+                </p>
+            </section>
+
+            <section>
+                <h2>Petite histoire des GPT</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017</div>
+                        <div class="timeline-content"><strong>Attention is All You Need</strong> — Google publie l'architecture Transformer.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018</div>
+                        <div class="timeline-content"><strong>GPT-1</strong> — Première démonstration par OpenAI (117 M de paramètres).</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020</div>
+                        <div class="timeline-content"><strong>GPT-3</strong> — 175 Md de paramètres, le modèle qui a tout changé.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <div class="timeline-content"><strong>ChatGPT</strong> — Lancement public, basé sur GPT-3.5.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2023+</div>
+                        <div class="timeline-content"><strong>GPT-4, GPT-4o, o1...</strong> — Multimodalité, raisonnement, vision, voix.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Comment ça fonctionne ?</h2>
+                <p>ChatGPT prédit, mot après mot (ou plutôt <em>token</em> après token), <span class="highlight">la suite la plus probable</span> d'un texte à partir de tout ce qu'il a appris.</p>
+                <blockquote>
+                    « Le chat dort sur le... » → tapis (87 %), canapé (6 %), lit (4 %), ...
+                </blockquote>
+                <p>Trois étapes clés d'entraînement :</p>
+                <ol>
+                    <li><strong>Pré-entraînement</strong> : lecture massive de textes publics.</li>
+                    <li><strong>Fine-tuning supervisé</strong> : apprentissage sur exemples de conversations.</li>
+                    <li><strong>RLHF</strong> : affinage par retour humain (Reinforcement Learning from Human Feedback).</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Ce qu'il <em>n'est pas</em></h2>
+                <div class="comparison">
+                    <div class="bad">
+                        <h4>❌ Ce n'est pas…</h4>
+                        <ul>
+                            <li>Un moteur de recherche</li>
+                            <li>Une encyclopédie fiable à 100 %</li>
+                            <li>Une conscience ou une personne</li>
+                            <li>Une calculatrice précise</li>
+                            <li>Une source de vérité</li>
+                        </ul>
+                    </div>
+                    <div class="good">
+                        <h4>✅ C'est…</h4>
+                        <ul>
+                            <li>Un assistant linguistique très puissant</li>
+                            <li>Un copilote de rédaction & d'idées</li>
+                            <li>Un partenaire de réflexion</li>
+                            <li>Un accélérateur de productivité</li>
+                            <li>Un outil à <strong>vérifier</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ MODULE 2 ============ -->
+            <section class="section-slide">
+                <div class="section-num">Module 2</div>
+                <h2>Prendre en main</h2>
+                <p class="section-sub">Interface, modèles et fonctionnalités</p>
+            </section>
+
+            <section>
+                <h2>L'interface en un coup d'œil</h2>
+                <div class="cards">
+                    <div class="card"><h4>Barre latérale</h4><p>Historique des conversations, projets, GPT personnalisés.</p></div>
+                    <div class="card"><h4>Sélecteur de modèle</h4><p>Choix du modèle selon la tâche (rapide / avancé / raisonnement).</p></div>
+                    <div class="card"><h4>Zone de prompt</h4><p>Texte, pièces jointes, images, documents, audio.</p></div>
+                    <div class="card"><h4>Outils intégrés</h4><p>Web, analyse de données, images, Canvas, voix.</p></div>
+                    <div class="card"><h4>Mémoire</h4><p>Se souvient des infos utiles d'une conversation à l'autre.</p></div>
+                    <div class="card"><h4>Paramètres</h4><p>Confidentialité, apparence, instructions personnalisées.</p></div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Gratuit, Plus, Team, Entreprise</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Free</h4>
+                        <p>Accès limité aux modèles avancés, usage occasionnel, idéal pour découvrir.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Plus (~20 $/mois)</h4>
+                        <p>Accès prioritaire aux meilleurs modèles, outils avancés, génération d'images.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Team</h4>
+                        <p>Pour les PME : administration, espace partagé, données non utilisées pour entraîner.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Enterprise</h4>
+                        <p>Sécurité renforcée, SSO, conformité, SLA, usages intensifs en entreprise.</p>
+                    </div>
+                </div>
+                <p style="font-size: 0.65em; color: var(--text-muted); margin-top: 1em;">Les tarifs et noms de plans évoluent — toujours vérifier sur openai.com.</p>
+            </section>
+
+            <section>
+                <h2>Fonctionnalités à connaître</h2>
+                <ul class="checklist">
+                    <li><strong>Recherche Web</strong> — information fraîche, sources citées</li>
+                    <li><strong>Vision</strong> — analyse d'images, de photos, de captures d'écran</li>
+                    <li><strong>Analyse de documents</strong> — PDF, Word, Excel, CSV</li>
+                    <li><strong>Code Interpreter / Analyse de données</strong> — exécuter du Python</li>
+                    <li><strong>Génération d'images</strong> — DALL·E intégré</li>
+                    <li><strong>Mode vocal</strong> — conversation naturelle en temps réel</li>
+                    <li><strong>Canvas</strong> — espace d'édition collaboratif pour long documents / code</li>
+                    <li><strong>GPTs personnalisés</strong> — créer son propre assistant spécialisé</li>
+                </ul>
+            </section>
+
+            <!-- ============ MODULE 3 ============ -->
+            <section class="section-slide">
+                <div class="section-num">Module 3</div>
+                <h2>Prompt Engineering</h2>
+                <p class="section-sub">L'art de bien formuler ses demandes</p>
+            </section>
+
+            <section>
+                <h2>Un bon prompt change tout</h2>
+                <div class="comparison">
+                    <div class="bad">
+                        <h4>Prompt faible</h4>
+                        <div class="prompt-box" style="margin: 10px 0;">
+                            <span class="label bad">Trop vague</span><br>
+                            "Fais-moi un email pro."
+                        </div>
+                        <p style="font-size: 0.7em; color: var(--text-muted); margin: 0;">Résultat générique, à retravailler.</p>
+                    </div>
+                    <div class="good">
+                        <h4>Prompt structuré</h4>
+                        <div class="prompt-box" style="margin: 10px 0;">
+                            <span class="label good">Précis</span><br>
+                            "Rédige un email <strong>court</strong> (6 lignes max), <strong>ton courtois mais ferme</strong>, pour relancer un client qui n'a pas réglé la facture n°2026-042 (échéance : 15 jours). Objectif : obtenir un règlement sous 7 jours. Signe : Thierry."
+                        </div>
+                        <p style="font-size: 0.7em; color: var(--text-muted); margin: 0;">Résultat utilisable immédiatement.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>La méthode <span class="accent">CROQ</span></h2>
+                <p>Un cadre simple pour écrire un bon prompt :</p>
+                <div class="framework"><div class="letter">C</div><div class="text"><strong>Contexte</strong><p>Qui je suis, pour qui, pour quoi faire.</p></div></div>
+                <div class="framework"><div class="letter">R</div><div class="text"><strong>Rôle</strong><p>"Agis comme un expert comptable...", "Tu es un formateur en IA..."</p></div></div>
+                <div class="framework"><div class="letter">O</div><div class="text"><strong>Objectif</strong><p>Le résultat attendu, le format, la longueur, le ton.</p></div></div>
+                <div class="framework"><div class="letter">Q</div><div class="text"><strong>Quoi exclure</strong><p>Les contraintes, les choses à éviter, les exemples à ne pas suivre.</p></div></div>
+            </section>
+
+            <section>
+                <h2>Exemple de prompt complet</h2>
+                <div class="prompt-box">
+                    <span class="label good">Prompt structuré</span><br><br>
+                    <strong>[Rôle]</strong> Tu es un formateur expert en IA pour TPE/PME, pédagogue et concret.<br><br>
+                    <strong>[Contexte]</strong> Je prépare une formation d'une journée destinée à des dirigeants non techniques qui n'ont jamais utilisé ChatGPT.<br><br>
+                    <strong>[Tâche]</strong> Propose 5 cas d'usage concrets de ChatGPT applicables immédiatement dans leur quotidien pro (RH, admin, marketing, commercial).<br><br>
+                    <strong>[Format]</strong> Pour chaque cas : un titre, une phrase de contexte, un exemple de prompt prêt à coller, un gain estimé en temps.<br><br>
+                    <strong>[Contraintes]</strong> Pas de jargon, exemples en français, 150 mots max par cas.
+                </div>
+            </section>
+
+            <section>
+                <h2>Techniques avancées</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Few-shot prompting</h4>
+                        <p>Donner 2-3 exemples du format attendu avant de demander la vraie production.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Chain-of-thought</h4>
+                        <p>"Raisonne étape par étape avant de répondre." → améliore la qualité sur les tâches complexes.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Rôle & persona</h4>
+                        <p>"Tu es un juriste spécialisé en droit du travail..." → cadrage immédiat du registre.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Itérer</h4>
+                        <p>La première réponse n'est jamais la bonne. Reformuler, préciser, challenger.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Décomposer</h4>
+                        <p>Pour une tâche longue, découper en sous-tâches successives.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Donner des exemples</h4>
+                        <p>Coller un exemple de "ton préféré" et demander d'imiter le style.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ MODULE 4 ============ -->
+            <section class="section-slide">
+                <div class="section-num">Module 4</div>
+                <h2>Cas d'usage</h2>
+                <p class="section-sub">Ce que vous allez vraiment en faire</p>
+            </section>
+
+            <section>
+                <h2>Rédiger</h2>
+                <ul class="checklist">
+                    <li>Emails pro, relances, réponses à des réclamations</li>
+                    <li>Posts LinkedIn, newsletters, pages web</li>
+                    <li>Fiches produits, descriptions commerciales</li>
+                    <li>Scripts vidéo, scripts d'appel</li>
+                    <li>CR de réunion à partir de notes brutes</li>
+                    <li>Reformulation : plus clair, plus court, plus professionnel</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Analyser & synthétiser</h2>
+                <ul class="checklist">
+                    <li>Résumer un rapport de 50 pages en 10 points</li>
+                    <li>Comparer deux offres commerciales</li>
+                    <li>Extraire les points clés d'un contrat</li>
+                    <li>Classer des verbatims clients par thème</li>
+                    <li>Transformer un tableau brut en insights</li>
+                    <li>Traduire techniquement (pas que mot-à-mot)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Créer & brainstormer</h2>
+                <ul class="checklist">
+                    <li>Trouver 20 idées de noms de produit</li>
+                    <li>Explorer 5 angles différents pour un pitch</li>
+                    <li>Générer un plan de formation / un plan de livre</li>
+                    <li>Construire un planning éditorial sur 3 mois</li>
+                    <li>Imaginer des objections clients et leurs réponses</li>
+                    <li>Challenger une idée : "trouve 5 failles dans ce raisonnement"</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Coder & automatiser</h2>
+                <ul class="checklist">
+                    <li>Écrire une formule Excel / Google Sheets complexe</li>
+                    <li>Expliquer un bout de code en français simple</li>
+                    <li>Générer un script Python pour nettoyer un fichier CSV</li>
+                    <li>Déboguer un message d'erreur</li>
+                    <li>Créer une macro VBA ou un script Google Apps Script</li>
+                    <li>Rédiger une requête SQL à partir d'une question en français</li>
+                </ul>
+                <pre><code class="language-python" data-trim data-noescape>
+# Exemple généré en 10 secondes
+import pandas as pd
+
+df = pd.read_csv("ventes.csv")
+top = (df.groupby("commercial")["montant"]
+         .sum()
+         .sort_values(ascending=False)
+         .head(5))
+print(top)
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Former & apprendre</h2>
+                <ul class="checklist">
+                    <li>Expliquer un concept difficile "comme à un enfant de 10 ans"</li>
+                    <li>Créer un quiz à partir d'un cours</li>
+                    <li>Simuler un entretien d'embauche / un rôle de client difficile</li>
+                    <li>Préparer un argumentaire pour une réunion</li>
+                    <li>Apprendre une langue : conversation + corrections</li>
+                    <li>Résumer un article scientifique en 5 points</li>
+                </ul>
+            </section>
+
+            <!-- ============ MODULE 5 ============ -->
+            <section class="section-slide">
+                <div class="section-num">Module 5</div>
+                <h2>Limites & Éthique</h2>
+                <p class="section-sub">Les angles morts à ne pas ignorer</p>
+            </section>
+
+            <section>
+                <h2>Les hallucinations</h2>
+                <blockquote>
+                    Une <strong>hallucination</strong>, c'est quand ChatGPT invente une information fausse <em>mais présentée avec aplomb</em>.
+                </blockquote>
+                <p>Exemples typiques :</p>
+                <ul>
+                    <li>Citations attribuées à de mauvais auteurs</li>
+                    <li>Références juridiques ou académiques inexistantes</li>
+                    <li>Faits chiffrés approximatifs ou périmés</li>
+                    <li>URLs inventées de toutes pièces</li>
+                </ul>
+                <p style="margin-top: 1em;" class="accent">👉 Règle d'or : <strong>on vérifie toujours ce qui a de la valeur juridique, médicale, financière ou réputationnelle</strong>.</p>
+            </section>
+
+            <section>
+                <h2>Les autres limites</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Biais</h4>
+                        <p>Reflète les biais présents dans ses données d'entraînement (culturels, de genre, politiques...).</p>
+                    </div>
+                    <div class="card">
+                        <h4>Date de connaissance</h4>
+                        <p>Sans outil web, le modèle ignore les événements récents.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Calcul</h4>
+                        <p>Peu fiable sur les gros calculs sans l'outil "analyse de données".</p>
+                    </div>
+                    <div class="card">
+                        <h4>Mémoire limitée</h4>
+                        <p>Oublie progressivement le début des très longues conversations.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Pas de bon sens physique</h4>
+                        <p>Peut dire des choses absurdes sur l'espace, le temps, le monde réel.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Confiance excessive</h4>
+                        <p>Même quand il se trompe, il le dit avec assurance.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Confidentialité & RGPD</h2>
+                <div class="comparison">
+                    <div class="bad">
+                        <h4>❌ À ne jamais mettre</h4>
+                        <ul>
+                            <li>Données clients nominatives sensibles</li>
+                            <li>Documents RH confidentiels</li>
+                            <li>Mots de passe, clés API, tokens</li>
+                            <li>Codes sources propriétaires critiques</li>
+                            <li>Secrets industriels, données médicales</li>
+                        </ul>
+                    </div>
+                    <div class="good">
+                        <h4>✅ Bonnes pratiques</h4>
+                        <ul>
+                            <li>Anonymiser avant de coller</li>
+                            <li>Désactiver l'entraînement sur vos données</li>
+                            <li>Préférer les plans <em>Team/Enterprise</em> en entreprise</li>
+                            <li>Rédiger une charte d'usage interne</li>
+                            <li>Former les équipes aux risques</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>IA Act & cadre légal</h2>
+                <ul class="checklist">
+                    <li><strong>RGPD</strong> — s'applique dès qu'il y a une donnée personnelle</li>
+                    <li><strong>IA Act (UE, 2024-2026)</strong> — classification par niveau de risque</li>
+                    <li><strong>Transparence</strong> — informer quand un contenu est généré par IA</li>
+                    <li><strong>Droit d'auteur</strong> — statut encore flou sur les contenus générés</li>
+                    <li><strong>Responsabilité</strong> — vous restez responsable de ce que vous publiez</li>
+                </ul>
+                <blockquote style="margin-top: 1em;">
+                    ⚖️ L'IA ne vous dédouane de rien. Elle vous aide à produire — vous validez et vous signez.
+                </blockquote>
+            </section>
+
+            <!-- ============ MODULE 6 ============ -->
+            <section class="section-slide">
+                <div class="section-num">Module 6</div>
+                <h2>Atelier pratique</h2>
+                <p class="section-sub">Place à l'action</p>
+            </section>
+
+            <section>
+                <h2>Exercice 1 — Email de relance</h2>
+                <p><strong>Objectif</strong> : rédiger un email de relance commercial efficace.</p>
+                <ol>
+                    <li>Choisir un vrai contexte pro de la semaine</li>
+                    <li>Écrire un prompt en appliquant la méthode <span class="accent">CROQ</span></li>
+                    <li>Comparer avec un prompt "faible" ("fais-moi un email")</li>
+                    <li>Itérer 2 fois pour obtenir la version finale</li>
+                    <li>Partager en binôme : qu'est-ce qui a fait la différence ?</li>
+                </ol>
+                <p style="margin-top: 1em; color: var(--text-muted);">⏱️ 15 minutes</p>
+            </section>
+
+            <section>
+                <h2>Exercice 2 — Synthèse de document</h2>
+                <p><strong>Objectif</strong> : extraire les points clés d'un document long.</p>
+                <ol>
+                    <li>Importer un PDF ou coller un article</li>
+                    <li>Demander une synthèse en 10 bullet points</li>
+                    <li>Demander les 3 risques / 3 opportunités identifiés</li>
+                    <li>Demander une version pour un public non expert</li>
+                    <li>Vérifier au moins 2 affirmations dans le document original</li>
+                </ol>
+                <p style="margin-top: 1em; color: var(--text-muted);">⏱️ 20 minutes</p>
+            </section>
+
+            <section>
+                <h2>Exercice 3 — Mon GPT personnalisé</h2>
+                <p><strong>Objectif</strong> : créer un assistant dédié à un besoin métier récurrent.</p>
+                <ol>
+                    <li>Identifier une tâche <em>que vous refaites chaque semaine</em></li>
+                    <li>Rédiger les instructions système du GPT (rôle, ton, format)</li>
+                    <li>Joindre 1 ou 2 documents de référence (modèles, charte...)</li>
+                    <li>Tester sur 3 cas réels</li>
+                    <li>Partager le lien avec un collègue pour feedback</li>
+                </ol>
+                <p style="margin-top: 1em; color: var(--text-muted);">⏱️ 30 minutes</p>
+            </section>
+
+            <!-- ============ 7. CONCLUSION ============ -->
+            <section class="section-slide">
+                <div class="section-num">Pour conclure</div>
+                <h2>À retenir</h2>
+                <p class="section-sub">Les 5 réflexes à emporter</p>
+            </section>
+
+            <section>
+                <h2>Les 5 réflexes à emporter</h2>
+                <ul class="checklist">
+                    <li><strong>Donner du contexte</strong> — qui, pour qui, pour quoi, dans quel format</li>
+                    <li><strong>Itérer, pas accepter</strong> — la 1ʳᵉ réponse n'est jamais la bonne</li>
+                    <li><strong>Vérifier ce qui a de la valeur</strong> — chiffres, citations, droit, santé</li>
+                    <li><strong>Protéger ses données</strong> — jamais de confidentiel brut</li>
+                    <li><strong>Rester le chef</strong> — l'IA propose, vous décidez et vous signez</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Plan d'action 7 jours</h2>
+                <div class="cards">
+                    <div class="card"><h4>Jour 1-2</h4><p>Identifier 3 tâches hebdomadaires chronophages à tester avec ChatGPT.</p></div>
+                    <div class="card"><h4>Jour 3-4</h4><p>Construire une bibliothèque personnelle de 10 prompts favoris.</p></div>
+                    <div class="card"><h4>Jour 5</h4><p>Créer un GPT personnalisé pour un besoin métier précis.</p></div>
+                    <div class="card"><h4>Jour 6</h4><p>Rédiger une mini-charte d'usage pour l'équipe (3 do, 3 don't).</p></div>
+                    <div class="card"><h4>Jour 7</h4><p>Mesurer : combien d'heures gagnées cette semaine ?</p></div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Pour aller plus loin</h2>
+                <div class="two-col">
+                    <div>
+                        <h3>Outils complémentaires</h3>
+                        <ul>
+                            <li><strong>Claude</strong> — Anthropic, excellent sur l'analyse</li>
+                            <li><strong>Gemini</strong> — Google, intégré à Workspace</li>
+                            <li><strong>Perplexity</strong> — recherche IA avec sources</li>
+                            <li><strong>Mistral / Le Chat</strong> — alternative européenne</li>
+                            <li><strong>Notebook LM</strong> — analyser ses propres documents</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Ressources</h3>
+                        <ul>
+                            <li>Doc officielle OpenAI</li>
+                            <li>Guides prompt engineering (OpenAI, Anthropic)</li>
+                            <li>Communautés : r/ChatGPT, LinkedIn</li>
+                            <li>Newsletter : <em>Flint</em>, <em>Ben's Bites</em></li>
+                            <li>Guide CNIL sur l'IA et le RGPD</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="title-slide">
+                <div class="gpt-logo">✓</div>
+                <h1>Merci !</h1>
+                <p class="subtitle">Des questions ? Un cas concret à débloquer ensemble ?</p>
+                <div class="meta">À vous de jouer — maintenant</div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
+
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: 'c/t',
+            controls: true,
+            progress: true,
+            center: false,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            width: 1280,
+            height: 800,
+            margin: 0.06,
+            minScale: 0.2,
+            maxScale: 2.0,
+            plugins: [RevealHighlight, RevealNotes, RevealMarkdown]
+        });
+    </script>
+</body>
+</html>
